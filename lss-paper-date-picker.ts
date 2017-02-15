@@ -49,6 +49,13 @@ class LssPaperDatePicker extends polymer.Base {
         type: String
     })
     errorMessage: string;
+     
+    @property({
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+    })
+    disabled:boolean;
 
     getDateString(date: Date): string {
         return date.toISOString().substring(0, 10);
