@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git://github.com/LssPolymerElements/paper-date-picker.git"
   },
-  "license": "https://opensource.org/licenses/MIT",
+  "license": "MIT",
   "homepage": "git://github.com/LssPolymerElements/paper-date-picker.git",
   "ignore": [
     "node_modules",
