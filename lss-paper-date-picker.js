@@ -31,10 +31,14 @@ var LssPaperDatePicker = (function (_super) {
         this.set('opened', false);
     };
     LssPaperDatePicker.prototype.dateStringChanged = function () {
-        this.set('date', new Date(this.dateString + " 12:00"));
+        if (this.dateString) {
+            this.set('date', new Date(this.dateString + " 12:00"));
+        }
     };
     LssPaperDatePicker.prototype.dateChanged = function (date) {
-        this.set('dateString', date.toISOString().substr(0, 10));
+        if (date && date !== "Invalid Date") {
+            this.set('dateString', date.toISOString().substr(0, 10));
+        }
     };
     LssPaperDatePicker.prototype.attached = function () {
         this.isNativeSupported = !bowser.msie && !bowser.msedge && !bowser.firefox;

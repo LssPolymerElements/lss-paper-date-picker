@@ -2,7 +2,7 @@
 
 @component("lss-paper-date-picker")
 class LssPaperDatePicker extends polymer.Base {
-        @property({
+    @property({
         type: String,
         notify: true
     })
@@ -66,14 +66,14 @@ class LssPaperDatePicker extends polymer.Base {
     }
 
     dateStringChanged() {
-        if(this.dateString){
+        if (this.dateString) {
             this.set('date', new Date(this.dateString + " 12:00"));
         }
     }
 
     @observe('date')
-    dateChanged(date: Date) {
-        if(date && date !== "Invalid Date"){
+    dateChanged(date: any) {
+        if (date && date !== "Invalid Date") {
             this.set('dateString', date.toISOString().substr(0, 10));
         }
     }
