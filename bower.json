@@ -1,22 +1,22 @@
 {
   "name": "lss-paper-date-picker",
   "version": "1.0.0",
-  "description": "A polymer date picker component",
+  "description": "A Polymer element that provides a paper-date-picker for browsers that do not support input type date such as IE, Edge and Firefox.",
+  "license": "MIT",
   "authors": [
     "Leavitt Software Solutions"
   ],
   "keywords": [
     "polymer",
     "leavitt software",
-    "lss"
+    "date picker"
   ],
   "main": "lss-paper-date-picker.html",
   "repository": {
     "type": "git",
     "url": "git://github.com/LssPolymerElements/paper-date-picker.git"
   },
-  "license": "MIT",
-  "homepage": "git://github.com/LssPolymerElements/paper-date-picker.git",
+
   "ignore": [
     "node_modules",
     "bower_components",
