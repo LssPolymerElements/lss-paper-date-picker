@@ -1,0 +1,39 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../paper-button/paper-button.html">
+<link rel="import" href="../lss-paper-date-picker.html">
+
+<dom-module id="x-demo">
+    <template>
+        <lss-paper-date-picker></lss-paper-date-picker>
+    </template>
+    <script>
+        Polymer({
+            is: 'x-demo',
+            properties: {
+                foo: {
+                    type: String,
+                    value: "Hello world!"
+                },
+                shouldLoad: {
+                    type: Boolean,
+                    value: true
+                },
+            },
+            logoutClicked: function (e) {
+                console.log("logout clicked");
+                this.$.manager.logoutAsync();
+                location.reload();
+            },
+            getUserObject: function (e) {
+                this.$.manager.authenticateAndGetUserAsync().then(function (user) {
+                    console.log(user);
+                });
+            },
+            callMultiple: function (e) {
+                this.$.manager.authenticateAndGetUserAsync().then(function () { console.log("1 done"); });
+                this.$.manager.authenticateAndGetUserAsync().then(function () { console.log("2 done"); });
+                this.$.manager.authenticateAndGetUserAsync().then(function () { console.log("3 done"); });
+            }
+        });
+    </script>
+</dom-module>

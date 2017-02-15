@@ -1,0 +1,25 @@
+{
+  "name": "lss-paper-date-picker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lss-paper-date-picker.html",
+  "dependencies": { 
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LssPolymerElements/paper-date-picker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LssPolymerElements/paper-date-picker/issues"
+  },
+  "homepage": "https://github.com/LssPolymerElements/paper-date-picker#readme"
+}

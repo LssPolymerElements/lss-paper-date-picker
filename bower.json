@@ -1,0 +1,41 @@
+{
+  "name": "lss-paper-date-picker",
+  "version": "1.0.0",
+  "description": "A polymer date picker component",
+  "authors": [
+    "Leavitt Software Solutions"
+  ],
+  "keywords": [
+    "polymer",
+    "leavitt software",
+    "lss"
+  ],
+  "main": "lss-paper-date-picker.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LssPolymerElements/paper-date-picker.git"
+  },
+  "license": "https://opensource.org/licenses/MIT",
+  "homepage": "git://github.com/LssPolymerElements/paper-date-picker.git",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "package.json",
+    "tsconfig.json",
+    ".gitignore",
+    ".vscode"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "polymer-ts": "^0.1.26",
+    "bluebird": "^3.4.6",
+    "paper-date-picker": "polymer-paper-date-picker#^1.2.0",
+    "paper-input": "PolymerElements/paper-input#^1.1.17",
+    "paper-button": "PolymerElements/paper-button#^1.0.12",
+    "bowser-polymer": "*"
+  },
+  "devDependencies": {
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}
