@@ -38,6 +38,7 @@ var LssPaperDatePicker = (function (_super) {
     };
     LssPaperDatePicker.prototype.attached = function () {
         this.isNativeSupported = !bowser.msie && !bowser.msedge && !bowser.firefox;
+        this.dateStringChanged();
     };
     return LssPaperDatePicker;
 }(polymer.Base));
