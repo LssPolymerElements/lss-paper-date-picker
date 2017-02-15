@@ -7,7 +7,7 @@
 
 <dom-module id="lss-paper-date-picker">
     <template>
-        <paper-input id="dateInput" readonly="[[!isNativeSupported]]" on-change="dateStringChanged" readonly$="[[!isNativeSupported]]" validator="[[validator]]" value="{{dateString}}" type="date"
+        <paper-input id="dateInput" readonly="[[!isNativeSupported]]" on-change="dateStringChanged" disabled$="[[disabled]]" readonly$="[[!isNativeSupported]]" validator="[[validator]]" value="{{dateString}}" type="date"
       always-float-label required$="[[required]]" error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]"
       max="[[getDateString(max)]]"></paper-input>
 
