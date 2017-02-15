@@ -2,6 +2,8 @@
 
 To install use: `bower install --save lss-paper-date-picker`
 
+[ LIVE DEMO AND API ](https://www.webcomponents.org/element/LssPolymerElements/lss-paper-date-picker)
+
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/LssPolymerElements/lss-paper-date-picker)
 
 <!---
