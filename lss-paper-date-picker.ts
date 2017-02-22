@@ -73,14 +73,14 @@ class LssPaperDatePicker extends polymer.Base {
     }
 
     dateStringChanged() {
-        if (this.dateString) {
+        if (this.dateString && this.isNativeSupported) {
             this.set('date', new Date(this.dateString + " 12:00"));
         }
     }
 
     @observe('date')
     dateChanged(date: any) {
-        if (date && date !== "Invalid Date") {
+        if (date && date.toLocaleString() !== "Invalid Date" && !this.isNativeSupported) {
             this.set('dateString', date.toISOString().substr(0, 10));
         }
     }
