@@ -9,7 +9,7 @@
     <template>
         <paper-input id="dateInput" readonly="[[!isNativeSupported]]" on-change="dateStringChanged" disabled$="[[disabled]]" readonly$="[[!isNativeSupported]]" validator="[[validator]]" value="{{dateString}}" type="date"
       always-float-label required$="[[required]]" error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]"
-      max="[[getDateString(max)]]"></paper-input>
+      max="[[getDateString(max)]]" auto-validate="[[autoValidate]]"></paper-input>
 
         <template is="dom-if" if="[[opened]]">
         <paper-date-picker  force-narrow="true" date="{{date}}" id="picker"></paper-date-picker>
