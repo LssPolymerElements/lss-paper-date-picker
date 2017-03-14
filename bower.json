@@ -24,7 +24,6 @@
     "polymer": "Polymer/polymer#^1.4.0",
     "polymer-ts": "^0.1.26",
     "bluebird": "^3.4.6",
-    "paper-date-picker": "polymer-paper-date-picker#^1.2.0",
     "paper-input": "PolymerElements/paper-input#^1.1.17",
     "paper-button": "PolymerElements/paper-button#^1.0.12",
     "bowser-polymer": "*",
