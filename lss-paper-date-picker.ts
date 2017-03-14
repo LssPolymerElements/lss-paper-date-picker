@@ -49,27 +49,16 @@ class LssPaperDatePicker extends polymer.Base {
         type: String
     })
     errorMessage: string;
-     
+
     @property({
         type: Boolean,
         reflectToAttribute: true,
         value: false
     })
-    disabled:boolean;
+    disabled: boolean;
 
     getDateString(date: Date): string {
         return date.toISOString().substring(0, 10);
-    }
-
-    @listen("dateInput.tap")
-    openDateModal() {
-        if (!this.isNativeSupported) {
-            this.set('opened', true);
-        }
-    }
-
-    confirmDate() {
-        this.set('opened', false);
     }
 
     dateStringChanged() {
