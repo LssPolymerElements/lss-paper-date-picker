@@ -2,22 +2,23 @@
 <link rel="import" href="../polymer-ts/polymer-ts.html">
 <link rel="import" href="../paper-input/paper-input.html" />
 <link rel="import" href="../paper-button/paper-button.html" />
-<link rel="import" href="../paper-date-picker/paper-date-picker.html">
+<link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
 <link rel="import" href="../bowser-polymer/bowser-polymer.html">
-
 <dom-module id="lss-paper-date-picker">
     <template>
-        <paper-input id="dateInput" readonly="[[!isNativeSupported]]" on-change="dateStringChanged" disabled$="[[disabled]]" readonly$="[[!isNativeSupported]]" validator="[[validator]]" value="{{dateString}}" type="date"
-      always-float-label required$="[[required]]" error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]"
-      max="[[getDateString(max)]]" auto-validate="[[autoValidate]]"></paper-input>
+        <template is="dom-if" if="[[isNativeSupported]]" restamp>
+            <paper-input on-change="dateStringChanged" disabled$="[[disabled]]" validator="[[validator]]" value="{{dateString}}" type="date"
+                always-float-label required$="[[required]]" error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]"
+                max="[[getDateString(max)]]" auto-validate="[[autoValidate]]"></paper-input>
+        </template>
+        <template is="dom-if" if="[[!isNativeSupported]]" restamp>
+            <vaadin-date-picker date="{{date}}" is-selected="{{isSelected}}" id="picker" validator="[[validator]]" value="{{dateString}}"
+                error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]" max="[[getDateString(max)]]"
+                auto-validate="[[autoValidate]]">
+            </vaadin-date-picker>
 
-        <template is="dom-if" if="[[opened]]">
-        <paper-date-picker  force-narrow="true" date="{{date}}" id="picker"></paper-date-picker>
-                <div class="buttons">
-                    <paper-button id="confirm" on-tap="confirmDate">OK</paper-button>
-                </div>
         </template>
 
-  </template>
+    </template>
     <script src="./lss-paper-date-picker.js"></script>
 </dom-module>

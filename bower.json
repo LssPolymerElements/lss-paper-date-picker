@@ -11,7 +11,7 @@
   ],
   "main": "lss-paper-date-picker.html",
   "description": "A Polymer element that provides a paper-date-picker for browsers that do not support input type date such as IE, Edge and Firefox.",
-  "license": "MIT", 
+  "license": "MIT",
   "ignore": [
     "node_modules",
     "bower_components",
@@ -24,10 +24,10 @@
     "polymer": "Polymer/polymer#^1.4.0",
     "polymer-ts": "^0.1.26",
     "bluebird": "^3.4.6",
-    "paper-date-picker": "polymer-paper-date-picker#^1.2.0",
     "paper-input": "PolymerElements/paper-input#^1.1.17",
     "paper-button": "PolymerElements/paper-button#^1.0.12",
-    "bowser-polymer": "*"
+    "bowser-polymer": "*",
+    "vaadin-date-picker": "^1.2.1"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0",
