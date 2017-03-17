@@ -77,7 +77,7 @@ class LssPaperDatePicker extends polymer.Base {
     }
 
     attached() {
-        this.isNativeSupported = !bowser.msie && !bowser.msedge && !bowser.firefox && !bowser.mac;
+        this.isNativeSupported = !bowser.msie && !bowser.firefox && !bowser.mac;
         if (bowser.ios) {
             this.set("dateString", new Date().toISOString().substr(0, 10));
         }
