@@ -1,4 +1,6 @@
-﻿declare var bowser: any;
+﻿/// <reference path="./bower_components/polymer-ts/polymer-ts.ts" />
+
+declare var bowser: any;
 
 @component("lss-paper-date-picker")
 class LssPaperDatePicker extends polymer.Base {
@@ -75,7 +77,10 @@ class LssPaperDatePicker extends polymer.Base {
     }
 
     attached() {
-        this.isNativeSupported = !bowser.msie && !bowser.msedge && !bowser.firefox;
+        this.isNativeSupported = !bowser.msie && !bowser.msedge && !bowser.firefox && !bowser.mac;
+        if (bowser.ios) {
+            this.set("dateString", new Date().toISOString().substr(0, 10));
+        }
         this.dateStringChanged();
     }
 }
