@@ -22,26 +22,21 @@ var LssPaperDatePicker = (function (_super) {
     LssPaperDatePicker.prototype.getDateString = function (date) {
         return date.toISOString().substring(0, 10);
     };
-    LssPaperDatePicker.prototype.openDateModal = function () {
-        if (!this.isNativeSupported) {
-            this.set('opened', true);
-        }
-    };
-    LssPaperDatePicker.prototype.confirmDate = function () {
-        this.set('opened', false);
-    };
     LssPaperDatePicker.prototype.dateStringChanged = function () {
-        if (this.dateString) {
+        if (this.dateString && this.isNativeSupported) {
             this.set('date', new Date(this.dateString + " 12:00"));
         }
     };
     LssPaperDatePicker.prototype.dateChanged = function (date) {
-        if (date && date !== "Invalid Date") {
+        if (date && date.toLocaleString() !== "Invalid Date" && !this.isNativeSupported) {
             this.set('dateString', date.toISOString().substr(0, 10));
         }
     };
     LssPaperDatePicker.prototype.attached = function () {
-        this.isNativeSupported = !bowser.msie && !bowser.msedge && !bowser.firefox;
+        this.isNativeSupported = !bowser.msie && !bowser.firefox && !bowser.mac;
+        if (bowser.ios) {
+            this.set("dateString", new Date().toISOString().substr(0, 10));
+        }
         this.dateStringChanged();
     };
     return LssPaperDatePicker;
@@ -95,8 +90,12 @@ __decorate([
     })
 ], LssPaperDatePicker.prototype, "errorMessage", void 0);
 __decorate([
-    listen("dateInput.tap")
-], LssPaperDatePicker.prototype, "openDateModal", null);
+    property({
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+    })
+], LssPaperDatePicker.prototype, "disabled", void 0);
 __decorate([
     observe('date')
 ], LssPaperDatePicker.prototype, "dateChanged", null);
