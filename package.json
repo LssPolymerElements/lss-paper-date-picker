@@ -1,10 +1,9 @@
 {
   "name": "lss-paper-date-picker",
-  "version": "1.0.0",
+  "version": "1.1.4",
   "description": "",
   "main": "lss-paper-date-picker.html",
-  "dependencies": { 
-  },
+  "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.18.2",
     "gulp": "^3.9.1"

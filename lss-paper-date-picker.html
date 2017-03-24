@@ -22,8 +22,8 @@
                 max="[[getDateString(max)]]" auto-validate="[[autoValidate]]"></paper-input>
         </template>
         <template is="dom-if" if="[[!isNativeSupported]]" restamp>
-            <vaadin-date-picker date="{{date}}" is-selected="{{isSelected}}" id="picker" validator="[[validator]]" value="{{dateString}}"
-                error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]" max="[[getDateString(max)]]"
+            <vaadin-date-picker date="{{date}}" is-selected="{{isSelected}}" id="picker" required$="[[required]]" validator="[[validator]]"
+                value="{{dateString}}" error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]" max="[[getDateString(max)]]"
                 auto-validate="[[autoValidate]]">
             </vaadin-date-picker>
 

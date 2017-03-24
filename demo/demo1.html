@@ -1,6 +1,8 @@
 <link rel="import" href="../../polymer/polymer.html">
 <link rel="import" href="../../paper-button/paper-button.html">
+<link rel="import" href="../../iron-form/iron-form.html">
 <link rel="import" href="../lss-paper-date-picker.html">
+
 
 <dom-module id="x-demo">
     <template>
@@ -9,6 +11,13 @@
 
         <h2>Start with prefilled date</h2>
         <lss-paper-date-picker date-string="2012-03-04"></lss-paper-date-picker>
+
+        <h2>Required validation</h2>
+        <form is="iron-form" id="form">
+            <lss-paper-date-picker id="dateValidate" required error-message="Required"></lss-paper-date-picker>
+            <paper-button style="margin-top:20px" on-tap="validate" raised>Validate</paper-button>
+        </form>
+
     </template>
     <script>
         Polymer({
@@ -23,20 +32,9 @@
                     value: true
                 },
             },
-            logoutClicked: function (e) {
-                console.log("logout clicked");
-                this.$.manager.logoutAsync();
-                location.reload();
-            },
-            getUserObject: function (e) {
-                this.$.manager.authenticateAndGetUserAsync().then(function (user) {
-                    console.log(user);
-                });
-            },
-            callMultiple: function (e) {
-                this.$.manager.authenticateAndGetUserAsync().then(function () { console.log("1 done"); });
-                this.$.manager.authenticateAndGetUserAsync().then(function () { console.log("2 done"); });
-                this.$.manager.authenticateAndGetUserAsync().then(function () { console.log("3 done"); });
+            validate: function (e) {
+                console.log("Validate date picker");
+                this.$.form.validate();
             }
         });
     </script>
