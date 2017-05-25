@@ -17,27 +17,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var LssPaperDatePicker = (function (_super) {
     __extends(LssPaperDatePicker, _super);
     function LssPaperDatePicker() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this._observerLock = false;
+        return _this;
     }
+    LssPaperDatePicker.prototype.valueChanged = function (value) {
+        var m = moment(value);
+        if (!m.isValid()) {
+            return;
+        }
+        this._observerLock = true;
+        this.set('dateString', m.toISOString().substr(0, 10));
+        this._observerLock = false;
+    };
+    LssPaperDatePicker.prototype.dateStringChanged = function (date) {
+        if (this._observerLock)
+            return;
+        var m = moment(date);
+        if (!m.isValid()) {
+            return;
+        }
+        this.value = moment(date);
+        this.date = moment(date).toDate();
+    };
     LssPaperDatePicker.prototype.getDateString = function (date) {
         return date.toISOString().substring(0, 10);
     };
-    LssPaperDatePicker.prototype.dateStringChanged = function () {
-        if (this.dateString && this.isNativeSupported) {
-            this.set('date', new Date(this.dateString + " 12:00"));
-        }
-    };
     LssPaperDatePicker.prototype.dateChanged = function (date) {
-        if (date && date.toLocaleString() !== "Invalid Date" && !this.isNativeSupported) {
-            this.set('dateString', date.toISOString().substr(0, 10));
+        var m = moment(date);
+        if (!m.isValid()) {
+            return;
         }
+        this.value = m;
+        this._observerLock = true;
+        this.set('dateString', m.toISOString().substr(0, 10));
+        this._observerLock = false;
     };
     LssPaperDatePicker.prototype.attached = function () {
         this.isNativeSupported = !bowser.msie && !bowser.firefox && !bowser.mac;
-        if (bowser.ios) {
-            this.set("dateString", new Date().toISOString().substr(0, 10));
+        if (bowser.ios && !this.value) {
+            this.value = moment();
         }
-        this.dateStringChanged();
     };
     return LssPaperDatePicker;
 }(polymer.Base));
@@ -96,6 +116,31 @@ __decorate([
         value: false
     })
 ], LssPaperDatePicker.prototype, "disabled", void 0);
+__decorate([
+    property({
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+    })
+], LssPaperDatePicker.prototype, "focused", void 0);
+__decorate([
+    property({
+        type: Boolean,
+        notify: true
+    })
+], LssPaperDatePicker.prototype, "invalid", void 0);
+__decorate([
+    property({
+        type: Object,
+        notify: true
+    })
+], LssPaperDatePicker.prototype, "value", void 0);
+__decorate([
+    observe('value')
+], LssPaperDatePicker.prototype, "valueChanged", null);
+__decorate([
+    observe('dateString')
+], LssPaperDatePicker.prototype, "dateStringChanged", null);
 __decorate([
     observe('date')
 ], LssPaperDatePicker.prototype, "dateChanged", null);

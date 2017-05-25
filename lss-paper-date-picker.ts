@@ -1,5 +1,5 @@
-﻿
-declare var bowser: any;
+﻿declare var bowser: any;
+declare var moment: any;
 
 @component("lss-paper-date-picker")
 class LssPaperDatePicker extends polymer.Base {
@@ -58,29 +58,74 @@ class LssPaperDatePicker extends polymer.Base {
     })
     disabled: boolean;
 
+    @property({
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+    })
+    focused: boolean;
+
+    @property({
+        type: Boolean,
+        notify: true
+    })
+    invalid: boolean;
+
+    @property({
+        type: Object,
+        notify: true
+    })
+    value: any; //Moment Object
+
+    _observerLock = false;
+    @observe('value')
+    valueChanged(value: any) {
+        var m = moment(value);
+        if (!m.isValid()) {
+            return;
+        }
+
+        this._observerLock = true;
+        this.set('dateString', m.toISOString().substr(0, 10));
+        this._observerLock = false;
+    }
+
+    @observe('dateString')
+    dateStringChanged(date: any) {
+        if (this._observerLock)
+            return;
+
+        var m = moment(date);
+        if (!m.isValid()) {
+            return;
+        }
+
+        this.value = moment(date);
+        this.date = moment(date).toDate();
+    }
+
     getDateString(date: Date): string {
         return date.toISOString().substring(0, 10);
     }
 
-    dateStringChanged() {
-        if (this.dateString && this.isNativeSupported) {
-            this.set('date', new Date(this.dateString + " 12:00"));
-        }
-    }
-
     @observe('date')
     dateChanged(date: any) {
-        if (date && date.toLocaleString() !== "Invalid Date" && !this.isNativeSupported) {
-            this.set('dateString', date.toISOString().substr(0, 10));
+        var m = moment(date);
+        if (!m.isValid()) {
+            return;
         }
+
+        this.value = m;
+        this._observerLock = true;
+        this.set('dateString', m.toISOString().substr(0, 10));
+        this._observerLock = false;
     }
 
     attached() {
         this.isNativeSupported = !bowser.msie && !bowser.firefox && !bowser.mac;
-        if (bowser.ios) {
-            this.set("dateString", new Date().toISOString().substr(0, 10));
+        if (bowser.ios && !this.value) {
+            this.value = moment();
         }
-        this.dateStringChanged();
     }
 }
 

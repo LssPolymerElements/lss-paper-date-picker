@@ -5,7 +5,7 @@ var browserSync = require('browser-sync').create();
 gulp.task('compile', function (done) {
   exec('tsc', function (err, stdOut, stdErr) {
     console.log(stdOut);
-    if (err){
+    if (err) {
       done(err);
     } else {
       done();
@@ -14,9 +14,9 @@ gulp.task('compile', function (done) {
 });
 
 gulp.task('polymerServe', function (done) {
-  exec('polymer serve', function (err, stdOut, stdErr) {
+  exec('polymer serve -p 8000 -v', function (err, stdOut, stdErr) {
     console.log(stdOut);
-    if (err){
+    if (err) {
       done(err);
     } else {
       done();
@@ -24,15 +24,15 @@ gulp.task('polymerServe', function (done) {
   });
 });
 
-gulp.task('browser-sync', function() {
-    browserSync.init({
-         proxy: "localhost:8080",
-         files: '*.html, *.js, images/*, demo/*.html'
-    });
+gulp.task('browser-sync', function () {
+  browserSync.init({
+    proxy: "localhost:8000",
+    files: '*.html, *.js, images/*, demo/*.html'
+  });
 });
 
-gulp.task('ts-watch', ['compile'], function() {
-    gulp.watch('./*.ts', ['compile']);
+gulp.task('ts-watch', ['compile'], function () {
+  gulp.watch('./*.ts', ['compile']);
 });
 
-gulp.task('default', ['ts-watch','polymerServe','browser-sync']);
+gulp.task('default', ['ts-watch', 'polymerServe', 'browser-sync']);

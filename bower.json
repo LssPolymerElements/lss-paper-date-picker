@@ -27,7 +27,8 @@
     "paper-input": "PolymerElements/paper-input#^1.1.17",
     "paper-button": "PolymerElements/paper-button#^1.0.12",
     "bowser-polymer": "*",
-    "vaadin-date-picker": "^1.2.1"
+    "vaadin-date-picker": "^1.2.1",
+    "moment-js": "^0.4.1"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0",
