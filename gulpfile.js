@@ -27,7 +27,8 @@ gulp.task('polymerServe', function (done) {
 gulp.task('browser-sync', function () {
   browserSync.init({
     proxy: "localhost:8000",
-    files: '*.html, *.js, images/*, demo/*.html'
+    files: '*.html, *.js, images/*, demo/*.html',
+    startPath: '/components/lss-paper-date-picker/demo/index.html'
   });
 });
 

@@ -1,16 +1,18 @@
 {
   "name": "lss-paper-date-picker",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "keywords": [
     "polymer",
     "leavitt software",
     "date picker"
   ],
   "authors": [
-    "Leavitt Software Solutions"
+    "Aaron Drabeck <aaron-drabeck@leavitt.com>",
+    "Anthony Thomas <anthony-thomas@leavitt.com>",
+    "Kasey Hinton <kasey-hinton@leavitt.com>"
   ],
   "main": "lss-paper-date-picker.html",
-  "description": "A Polymer element that provides a paper-date-picker for browsers that do not support input type date such as IE, Edge and Firefox.",
+  "description": "A Polymer element that provides a paper-date-picker for browsers that do not support input type date such as IE and Firefox.",
   "license": "MIT",
   "ignore": [
     "node_modules",
@@ -21,18 +23,24 @@
     ".vscode"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0",
-    "polymer-ts": "^0.1.26",
-    "bluebird": "^3.4.6",
-    "paper-input": "PolymerElements/paper-input#^1.1.17",
-    "paper-button": "PolymerElements/paper-button#^1.0.12",
-    "bowser-polymer": "^1.0.6",
-    "vaadin-date-picker": "^1.2.1",
-    "moment-js": "^0.4.1"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "polymer2-ts": "^1.0.0",
+    "paper-input": "PolymerElements/paper-input#^2.0.0",
+    "bowser-polymer": "^2.0.0",
+    "moment-element": "abdonrd/moment-element#^2.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-animations-js": "^2.2.5",
+    "titanium-date-input": "^1.0.0"
   },
   "devDependencies": {
-    "web-component-tester": "^4.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
-    "iron-form": "PolymerElements/iron-form#^1.1.4"
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
+    "iron-form": "PolymerElements/iron-form#^2.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0",
+    "mocha": "^3.1.2",
+    "test-fixture": "^3.0.0-rc.1",
+    "webcomponentsjs": "^1.0.0"
   }
 }

@@ -1,0 +1,65 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../iron-form/iron-form.html">
+<link rel="import" href="../lss-paper-date-picker.html">
+<link rel="import" href="../../iron-form/iron-form.html">
+
+<dom-module id="lss-paper-date-picker-demo">
+    <template>
+        <style>
+            lss-paper-date-picker {
+                margin-bottom: 24px;
+            }
+        </style>
+        <h2>Start with prefilled date via moment</h2>
+        <lss-paper-date-picker value="{{momentDate}}"></lss-paper-date-picker>
+
+        <h5>
+            momentDate: [[momentDate]]
+        </h5>
+
+        <h2>Bound</h2>
+        <lss-paper-date-picker value="{{momentDate2}}"></lss-paper-date-picker>
+
+        <h5>
+            momentDate2: [[momentDate2]]
+        </h5>
+
+        <h2>Required validation</h2>
+        <iron-form id="form">
+            <form>
+                <lss-paper-date-picker required error-message="Required"></lss-paper-date-picker>
+                <button on-click="validate">Validate</button>
+            </form>
+        </iron-form>
+
+    </template>
+    <script>
+        class LssPaperDatePickerDemo extends Polymer.Element {
+            static get is() {
+                return 'lss-paper-date-picker-demo';
+            }
+
+            static get properties() {
+                return {
+                    shouldLoad: {
+                        type: Boolean,
+                        value: true
+                    },
+                    momentDate: {
+                        type: Object,
+                        value: moment("04/03/1999", 'MM/DD/YYYY')
+                    }
+                }
+            }
+
+            validate(e) {
+                this.$.form.validate();
+            }
+
+            ready() {
+                super.ready();
+            }
+        }
+        customElements.define(LssPaperDatePickerDemo.is, LssPaperDatePickerDemo);
+    </script>
+</dom-module>

@@ -1,132 +1,68 @@
 ﻿declare var bowser: any;
 declare var moment: any;
 
-@component("lss-paper-date-picker")
-class LssPaperDatePicker extends polymer.Base {
-    @property({
-        type: String,
-        notify: true
-    })
-    dateString: string;
+@customElement('lss-paper-date-picker')
+class LssPaperDatePicker extends Polymer.Element {
 
     @property({
-        type: Date,
-        notify: true
-    })
-    min: Date;
-
-    @property({
-        type: Date,
-        notify: true
-    })
-    max: Date;
-
-    @property({
-        type: Date,
-        notify: true
-    })
-    date: Date;
-
-    @property({
-        type: Boolean,
         reflectToAttribute: true
     })
     required: boolean;
 
     @property({
-        type: Boolean,
         reflectToAttribute: true
     })
     isNativeSupported: boolean;
 
     @property({
-        type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflectToAttribute: true
     })
-    opened: boolean;
+    opened: boolean = false;
 
-    @property({
-        type: String
-    })
+    @property()
     errorMessage: string;
 
     @property({
-        type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflectToAttribute: true
     })
-    disabled: boolean;
+    disabled: boolean = false;
 
     @property({
-        type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflectToAttribute: true
     })
-    focused: boolean;
+    focused: boolean = false;
 
     @property({
-        type: Boolean,
         notify: true
     })
     invalid: boolean;
 
     @property({
-        type: Object,
         notify: true
     })
-    value: any; //Moment Object
+    value: any;
 
-    _observerLock = false;
     @observe('value')
-    valueChanged(value: any) {
-        var m = moment(value);
-        if (!m.isValid()) {
+    valueChanged(value: any, oldValue: any) {
+        if (value === oldValue)
             return;
+        if (typeof value === 'object')
+            this.set('value', moment(value, 'YYYY-MM-DD').format('YYYY-MM-DD'));
+    }
+
+    validate(): boolean {
+        if (this.shadowRoot) {
+            let nativeInput: any = this.shadowRoot.querySelector('#nativeInput');
+            if (nativeInput)
+                return nativeInput.validate();
         }
-
-        this._observerLock = true;
-        this.set('dateString', m.toISOString().substr(0, 10));
-        this._observerLock = false;
+        return true;
     }
 
-    @observe('dateString')
-    dateStringChanged(date: any) {
-        if (this._observerLock)
-            return;
-
-        var m = moment(date);
-        if (!m.isValid()) {
-            return;
-        }
-
-        this.value = moment(date);
-        this.date = moment(date).toDate();
-    }
-
-    getDateString(date: Date): string {
-        return date.toISOString().substring(0, 10);
-    }
-
-    @observe('date')
-    dateChanged(date: any) {
-        var m = moment(date);
-        if (!m.isValid()) {
-            return;
-        }
-
-        this.value = m;
-        this._observerLock = true;
-        this.set('dateString', m.toISOString().substr(0, 10));
-        this._observerLock = false;
-    }
-
-    attached() {
+    connectedCallback() {
+        super.connectedCallback();
         this.isNativeSupported = !bowser.msie && !bowser.firefox && !bowser.mac;
-        if (bowser.ios && !this.value) {
+        if (bowser.ios && !this.value)
             this.value = moment();
-        }
     }
 }
-
-LssPaperDatePicker.register();

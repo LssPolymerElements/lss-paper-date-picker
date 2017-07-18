@@ -1,35 +1,32 @@
 ﻿<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../polymer-ts/polymer-ts.html">
-<link rel="import" href="../paper-input/paper-input.html" />
-<link rel="import" href="../paper-button/paper-button.html" />
-<link rel="import" href="../vaadin-date-picker/vaadin-date-picker.html">
+<link rel="import" href="../polymer2-ts/polymer2-ts.html">
+<link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../bowser-polymer/bowser-polymer.html">
-<link rel="import" href="../moment-js/moment-js.html">
+<link rel="import" href="../moment-element/moment-element.html">
+<link rel="import" href="../titanium-date-input/titanium-date-input.html">
+<link rel="import" href="../polymer/lib/elements/dom-if.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+
 <dom-module id="lss-paper-date-picker">
     <template>
         <style>
-            vaadin-date-picker {
-                --vaadin-date-picker-yearscroller: {
-                    @apply(--lss-date-picker-yearscroller);
-                }
-                --vaadin-date-picker-overlay: {
-                    @apply(--lss-date-picker-overlay);
-                }
+             :host {
+                display: block;
             }
         </style>
-        <template is="dom-if" if="[[isNativeSupported]]" restamp>
-            <paper-input disabled$="[[disabled]]" validator="[[validator]]" value="{{dateString}}" type="date" always-float-label focused="{{focused}}"
-                invalid="{{invalid}}" required$="[[required]]" error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]"
-                max="[[getDateString(max)]]" auto-validate="[[autoValidate]]"></paper-input>
-        </template>
-        <template is="dom-if" if="[[!isNativeSupported]]" restamp>
-            <vaadin-date-picker is-selected="{{isSelected}}" id="picker" required$="[[required]]" validator="[[validator]]" value="{{dateString}}"
-                error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]" max="[[getDateString(max)]]"
-                auto-validate="[[autoValidate]]" disabled$="[[disabled]]">
-            </vaadin-date-picker>
-
-        </template>
-
+        <dom-if if="[[isNativeSupported]]" restamp>
+            <template>
+                <paper-input id="nativeInput" disabled$="[[disabled]]" validator="[[validator]]" value="{{value}}" type="date" always-float-label
+                    focused="{{focused}}" invalid="{{invalid}}" required$="[[required]]" error-message="[[errorMessage]]" label="[[label]]"
+                    auto-validate="[[autoValidate]]"></paper-input>
+            </template>
+        </dom-if>
+        <dom-if if="[[!isNativeSupported]]" restamp>
+            <template>
+                <titanium-date-input auto-validate="false" label="[[label]]" required$="[[required]]" error-message="[[errorMessage]]" invalid="{{invalid}}"
+                    value="{{value}}" disabled$="[[disabled]]"></titanium-date-input>
+            </template>
+        </dom-if>
     </template>
     <script src="./lss-paper-date-picker.js"></script>
 </dom-module>
