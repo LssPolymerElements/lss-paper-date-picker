@@ -42,6 +42,9 @@ class LssPaperDatePicker extends Polymer.Element {
     })
     value: any;
 
+    @property()
+    label: string;
+
     @observe('value')
     valueChanged(value: any, oldValue: any) {
         if (value === oldValue)

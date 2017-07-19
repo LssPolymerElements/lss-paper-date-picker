@@ -82,6 +82,10 @@ __decorate([
     __metadata("design:type", Object)
 ], LssPaperDatePicker.prototype, "value", void 0);
 __decorate([
+    property(),
+    __metadata("design:type", String)
+], LssPaperDatePicker.prototype, "label", void 0);
+__decorate([
     observe('value'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
