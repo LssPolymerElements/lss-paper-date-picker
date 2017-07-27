@@ -2,6 +2,9 @@
 <link rel="import" href="../../iron-form/iron-form.html">
 <link rel="import" href="../lss-paper-date-picker.html">
 <link rel="import" href="../../iron-form/iron-form.html">
+<link rel="import" href="../../iron-icons/iron-icons.html">
+<link rel="import" href="../../iron-icon/iron-icon.html">
+
 
 <dom-module id="lss-paper-date-picker-demo">
     <template>
@@ -28,6 +31,10 @@
         <iron-form id="form">
             <form>
                 <lss-paper-date-picker required error-message="Required"></lss-paper-date-picker>
+
+                <lss-paper-date-picker required error-message="Required">
+                    <iron-icon icon="alarm" slot="prefix">PREFIX</iron-icon>
+                </lss-paper-date-picker>
                 <button on-click="validate">Validate</button>
             </form>
         </iron-form>

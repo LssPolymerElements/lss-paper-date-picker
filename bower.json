@@ -35,7 +35,8 @@
   "devDependencies": {
     "web-component-tester": "^6.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
-    "iron-form": "PolymerElements/iron-form#^2.0.0"
+    "iron-form": "PolymerElements/iron-form#^2.0.0",
+    "iron-icons": "PolymerElements/iron-icons#^2.0.1"
   },
   "resolutions": {
     "polymer": "^2.0.0",
