@@ -13,29 +13,28 @@
              :host {
                 display: block;
             }
+
+             ::slotted(*) {
+                color: #737373;
+            }
+
+            paper-input[focused] ::slotted(*) {
+                --iron-icon-fill-color: var(--primary-color);
+                color: var(--primary-color);
+            }
+
+            paper-input[error] ::slotted(*) {
+                --iron-icon-fill-color: var(--error-color);
+                color: var(--error-color);
+            }
+
+            paper-input[disabled] ::slotted(*) {
+                --iron-icon-fill-color: #B6B6B6;
+                color: #B6B6B6;
+            }
         </style>
-        <dom-if if="[[isNativeSupported]]" restamp>
+        <dom-if if="[[isNativeSupported]]">
             <template>
-                <style>
-                     ::slotted(*) {
-                        color: #737373;
-                    }
-
-                    paper-input[focused] ::slotted(*) {
-                        --iron-icon-fill-color: var(--primary-color);
-                        color: var(--primary-color);
-                    }
-
-                    paper-input[error] ::slotted(*) {
-                        --iron-icon-fill-color: var(--error-color);
-                        color: var(--error-color);
-                    }
-
-                    paper-input[disabled] ::slotted(*) {
-                        --iron-icon-fill-color: #B6B6B6;
-                        color: #B6B6B6;
-                    }
-                </style>
                 <paper-input id="nativeInput" disabled$="[[disabled]]" validator="[[validator]]" value="{{value}}" type="date" always-float-label
                     focused="{{focused}}" invalid="{{error}}" error$="[[error]]" required$="[[required]]" error-message="[[errorMessage]]"
                     label="[[label]]" auto-validate="[[autoValidate]]">
@@ -43,14 +42,14 @@
                 </paper-input>
             </template>
         </dom-if>
-        <dom-if if="[[!isNativeSupported]]" restamp>
+        <dom-if if="[[!isNativeSupported]]">
             <template>
                 <titanium-date-input auto-validate="false" label="[[label]]" required$="[[required]]" error-message="[[errorMessage]]" invalid="{{invalid}}"
                     value="{{value}}" disabled$="[[disabled]]">
-                    <slot name="prefix" slot="prefix"></slot>
                 </titanium-date-input>
             </template>
         </dom-if>
+
     </template>
     <script src="./lss-paper-date-picker.js"></script>
 </dom-module>
