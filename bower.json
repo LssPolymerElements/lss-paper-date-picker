@@ -43,5 +43,8 @@
     "mocha": "^3.1.2",
     "test-fixture": "^3.0.0-rc.1",
     "webcomponentsjs": "^1.0.0"
+  },
+  "demos": {
+    "Demo": "demo/index.html"
   }
 }
