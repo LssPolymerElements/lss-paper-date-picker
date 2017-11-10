@@ -24,7 +24,7 @@
         </template>
         <template is="dom-if" if="[[!isNativeSupported]]" restamp>
             <vaadin-date-picker is-selected="{{isSelected}}" id="picker" required$="[[required]]" validator="[[validator]]" value="{{dateString}}"
-                error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]" max="[[getDateString(max)]]"
+                invalid="{{invalid}}" error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]" max="[[getDateString(max)]]"
                 auto-validate="[[autoValidate]]" disabled$="[[disabled]]">
             </vaadin-date-picker>
 
