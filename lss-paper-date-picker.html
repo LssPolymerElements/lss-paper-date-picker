@@ -20,7 +20,7 @@
         <template is="dom-if" if="[[isNativeSupported]]" restamp>
             <paper-input disabled$="[[disabled]]" validator="[[validator]]" value="{{dateString}}" type="date" always-float-label focused="{{focused}}"
                 invalid="{{invalid}}" required$="[[required]]" error-message="[[errorMessage]]" label="[[label]]" min="[[getDateString(min)]]"
-                max="[[getDateString(max)]]" auto-validate="[[autoValidate]]"></paper-input>
+                max="[[getDateString(max)]]" auto-validate="[[autoValidate]]"><slot name="prefix" prefix></slot></paper-input>
         </template>
         <template is="dom-if" if="[[!isNativeSupported]]" restamp>
             <vaadin-date-picker is-selected="{{isSelected}}" id="picker" required$="[[required]]" validator="[[validator]]" value="{{dateString}}"
