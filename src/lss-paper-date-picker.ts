@@ -49,7 +49,7 @@ class LssPaperDatePicker extends Polymer.Element {
 
   connectedCallback() {
     super.connectedCallback();
-    this.isNativeSupported = !bowser.msedge && !bowser.msie && !bowser.firefox && !bowser.mac;
+    this.isNativeSupported = !bowser.msedge && !bowser.msie && !bowser.safari;
     if (bowser.ios && !this.value)
       this.value = moment();
   }

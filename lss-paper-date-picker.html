@@ -33,7 +33,6 @@
                 color: #B6B6B6;
             }
         </style>
-        <paper-input type="date"></paper-input>
         <dom-if if="[[isNativeSupported]]">
             <template>
                 <paper-input id="nativeInput" disabled$="[[disabled]]" validator="[[validator]]" value="{{value}}" type="date" always-float-label
