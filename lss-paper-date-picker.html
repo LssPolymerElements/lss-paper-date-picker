@@ -1,5 +1,5 @@
 ﻿<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../polymer2-ts/polymer2-ts.html">
+<link rel="import" href="../polymer-decorators/polymer-decorators.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../bowser-polymer/bowser-polymer.html">
 <link rel="import" href="../moment-element/moment-element.html">
@@ -10,11 +10,11 @@
 <dom-module id="lss-paper-date-picker">
     <template>
         <style>
-             :host {
+            :host {
                 display: block;
             }
 
-             ::slotted(*) {
+            ::slotted(*) {
                 color: #737373;
             }
 
@@ -51,5 +51,5 @@
         </dom-if>
 
     </template>
-    <script src="./lss-paper-date-picker.js"></script>
+    <script src="lib/lss-paper-date-picker.js"></script>
 </dom-module>
